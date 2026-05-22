@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic English — C.K. Ogden's 850-Word Learning System</title>
+<style>
+  :root {
+    --bg: #0f1117; --card: #1a1d29; --border: #2a2d3a;
+    --accent: #3b82f6; --accent2: #22c55e; --accent3: #f43f5e; --accent4: #e8793f;
+    --text: #e2e8f0; --text2: #94a3b8; --text3: #64748b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.7;
+  }
+
+  .hero {
+    background:linear-gradient(135deg,#1a1d29 0%,#0f1117 50%,#1a1d29 100%);
+    border-bottom:1px solid var(--border); padding:60px 24px 40px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; top:-50%;left:-50%;width:200%;height:200%;
+    background:radial-gradient(circle at 30% 50%,rgba(59,130,246,0.08) 0%,transparent 50%),
+                radial-gradient(circle at 70% 50%,rgba(34,197,56,0.08) 0%,transparent 50%);
+    pointer-events:none;
+  }
+  .hero h1 { font-size:2.2em; font-weight:700; margin-bottom:12px; position:relative; }
+  .hero h1 span { color:var(--accent); }
+  .hero .subtitle { color:var(--text2); font-size:1em; position:relative; }
+  .hero .subtitle2 { color:var(--text3); font-size:0.85em; margin-top:6px; position:relative; }
+
+  .container { max-width:1000px; margin:0 auto; padding:32px 20px; }
+  .card {
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:28px; margin-bottom:24px;
+  }
+  .card h2 { font-size:1.3em; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  .card h2 .icon { width:32px;height:32px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:16px; }
+  .card h3 { font-size:1.05em; margin:16px 0 10px; color:var(--accent); }
+
+  .section-nav {
+    display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px;
+  }
+  .section-nav a {
+    padding:8px 16px; border-radius:8px; background:var(--card); border:1px solid var(--border);
+    color:var(--text2); text-decoration:none; font-size:0.85em; transition:all 0.2s;
+  }
+  .section-nav a:hover { background:rgba(59,130,246,0.1); border-color:var(--accent); color:var(--accent); }
+
+  .word-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(160px,1fr)); gap:8px;
+  }
+  .word-tag {
+    background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:6px;
+    padding:6px 10px; font-size:0.85em; text-align:center; transition:all 0.2s;
+  }
+  .word-tag:hover { border-color:var(--accent); background:rgba(59,130,246,0.08); transform:translateY(-1px); }
+  .word-tag.verb { border-color:rgba(243,63,94,0.3); }
+  .word-tag.noun { border-color:rgba(59,130,246,0.3); }
+  .word-tag.adj { border-color:rgba(34,197,56,0.3); }
+  .word-tag.gram { border-color:rgba(232,121,63,0.3); }
+
+  .info-list { list-style:none; padding:0; }
+  .info-list li {
+    padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05);
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .info-list li:last-child { border-bottom:none; }
+  .info-list .icon { font-size:1.1em; flex-shrink:0; width:24px; text-align:center; }
+  .info-list .content { flex:1; color:var(--text2); font-size:0.93em; }
+  .info-list .content strong { color:var(--text); }
+
+  .table-wrap { overflow-x:auto; margin:12px 0; }
+  table { width:100%; border-collapse:collapse; font-size:0.88em; }
+  th, td { padding:8px 12px; text-align:left; border-bottom:1px solid var(--border); }
+  th { color:var(--accent); font-weight:600; background:rgba(255,255,255,0.02); }
+  td { color:var(--text2); }
+  tr:hover td { background:rgba(255,255,255,0.02); }
+
+  .grammar-box {
+    background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px;
+    padding:16px 20px; margin:10px 0;
+  }
+  .grammar-box h4 { font-size:0.9em; margin-bottom:8px; color:var(--accent2); }
+  .grammar-box p, .grammar-box li { color:var(--text2); font-size:0.88em; }
+
+  .example { font-style:italic; color:var(--accent4); }
+
+  .quote-box {
+    border-left:3px solid var(--accent); padding:14px 18px;
+    background:rgba(59,130,246,0.05); border-radius:0 10px 10px 0; margin:14px 0;
+  }
+  .quote-box p { color:var(--text2); font-style:italic; font-size:0.92em; }
+  .quote-box .author { color:var(--text3); font-size:0.82em; margin-top:6px; font-style:normal; }
+
+  .ref-list { margin-top:16px; }
+  .ref-item {
+    display:flex; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04);
+    font-size:0.85em;
+  }
+  .ref-item:last-child { border-bottom:none; }
+  .ref-item a { color:var(--accent); text-decoration:none; }
+  .ref-item a:hover { text-decoration:underline; }
+
+  .footer { text-align:center; padding:32px; border-top:1px solid var(--border); color:var(--text3); font-size:0.8em; }
+
+  @media (max-width:640px) {
+    .hero h1 { font-size:1.5em; }
+    .word-grid { grid-template-columns:repeat(auto-fill, minmax(120px,1fr)); }
+    .card { padding:20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>📘 Basic English <span>by C.K. Ogden</span></h1>
+  <p class="subtitle">850 core words | 18 operators | simplified grammar | learn 90% of everyday English</p>
+  <p class="subtitle2">🗓️ First published 1930 — London: Kegan Paul, Trench, Trübner & Co. | 🦐 2026年5月整理</p>
+</div>
+
+<div class="container">
+
+  <div class="section-nav">
+    <a href="#overview">📖 Overview</a>
+    <a href="#grammar">📐 Grammar</a>
+    <a href="#verbs">🔧 18 Operators</a>
+    <a href="#words">📚 850 Words</a>
+    <a href="#usage">💬 How to Use</a>
+    <a href="#sources">🔗 Sources</a>
+  </div>
+
+  <!-- ============= OVERVIEW ============= -->
+  <div class="card" id="overview">
+    <h2><span class="icon" style="background:rgba(59,130,246,0.15)">📖</span> 1. What is Basic English?</h2>
+
+    <div class="quote-box">
+      <p>"Basic English is an attempt to focus on such problems. It is a language of eight hundred and fifty English words which will say clearly and simply almost everything we normally say with fifteen or twenty thousand."</p>
+      <div class="author">— C.K. Ogden, Basic English and Grammatical Reform (1937)</div>
+    </div>
+
+    <p style="color:var(--text2); margin-bottom:12px;">
+      <strong>Basic English</strong> stands for <strong>B</strong>ritish <strong>A</strong>cademic <strong>S</strong>cientific <strong>I</strong>nternational and <strong>C</strong>ommercial English. It was developed by <strong>Charles Kay Ogden</strong> (1889–1957), a Cambridge linguist and philosopher, and first published in 1930.
+    </p>
+    <p style="color:var(--text2); margin-bottom:12px;">
+      The core idea: <strong>90% of everyday concepts can be expressed with just 850 carefully chosen words</strong>, by eliminating redundancies and using paraphrasing instead of specialized vocabulary.
+    </p>
+
+    <h3>🎯 Purpose</h3>
+    <ul class="info-list">
+      <li><span class="icon">🌍</span><div class="content"><strong>International auxiliary language</strong> — a simple second language for global communication</div></li>
+      <li><span class="icon">🎓</span><div class="content"><strong>Teaching English as a second language</strong> — used extensively in China, Japan, and elsewhere in Asia</div></li>
+      <li><span class="icon">🧠</span><div class="content"><strong>Clarity of thought</strong> — a "machine for thought," as Ogden put it, stripping away word magic</div></li>
+    </ul>
+
+    <h3>🧩 Word Breakdown</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:10px; margin-top:10px;">
+      <div style="background:rgba(243,63,94,0.06); border:1px solid rgba(243,63,94,0.2); border-radius:8px; padding:14px; text-align:center;">
+        <div style="color:var(--accent3); font-size:1.4em; font-weight:700;">18</div>
+        <div style="color:var(--text2); font-size:0.8em;">Operators (verbs)</div>
+      </div>
+      <div style="background:rgba(59,130,246,0.06); border:1px solid rgba(59,130,246,0.2); border-radius:8px; padding:14px; text-align:center;">
+        <div style="color:var(--accent); font-size:1.4em; font-weight:700;">600</div>
+        <div style="color:var(--text2); font-size:0.8em;">Things (nouns) — 400 general + 200 picturable</div>
+      </div>
+      <div style="background:rgba(34,197,56,0.06); border:1px solid rgba(34,197,56,0.2); border-radius:8px; padding:14px; text-align:center;">
+        <div style="color:var(--accent2); font-size:1.4em; font-weight:700;">150</div>
+        <div style="color:var(--text2); font-size:0.8em;">Qualities (adjectives) — 100 general + 50 opposites</div>
+      </div>
+      <div style="background:rgba(232,121,63,0.06); border:1px solid rgba(232,121,63,0.2); border-radius:8px; padding:14px; text-align:center;">
+        <div style="color:var(--accent4); font-size:1.4em; font-weight:700;">82</div>
+        <div style="color:var(--text2); font-size:0.8em;">Grammatical words (prepositions, etc.)</div>
+      </div>
+      <div style="background:rgba(139,92,246,0.06); border:1px solid rgba(139,92,246,0.2); border-radius:8px; padding:14px; text-align:center;">
+        <div style="color:#a78bfa; font-size:1.4em; font-weight:700;">850</div>
+        <div style="color:var(--text2); font-size:0.8em;">Total Core Words</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============= GRAMMAR ============= -->
+  <div class="card" id="grammar">
+    <h2><span class="icon" style="background:rgba(34,197,56,0.15)">📐</span> 2. Grammar Rules (Simplified)</h2>
+
+    <div class="grammar-box">
+      <h4>📌 Plurals</h4>
+      <p>Add <strong>-s</strong> (or <strong>-es</strong>): <span class="example">drink → drinks</span>, <span class="example">box → boxes</span>, <span class="example">country → countries</span></p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 Noun-forming suffixes</h4>
+      <p><strong>-er</strong> → person who does: <span class="example">prison → prisoner</span>, <span class="example">drive → driver</span><br>
+      <strong>-ing</strong> → action/result: <span class="example">build → building</span>, <span class="example">learn → learning</span></p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 Adjective-forming suffixes</h4>
+      <p><strong>-ing</strong> → effect: <span class="example">boil → boiling water</span><br>
+      <strong>-ed</strong> → state: <span class="example">mix → mixed colors</span></p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 Adverbs</h4>
+      <p>Add <strong>-ly</strong> to qualities: <span class="example">tight → tightly</span>, <span class="example">smooth → smoothly</span></p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 Comparison</h4>
+      <p>Use <strong>more</strong> and <strong>most</strong>: <span class="example">more complex</span>, <span class="example">most beautiful</span><br>
+      (common -er/-est also accepted: <span class="example">cheaper</span>, <span class="example">smallest</span>)</p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 Negatives with un-</h4>
+      <p><span class="example">wise → unwise</span>, <span class="example">able → unable</span>, <span class="example">certain → uncertain</span></p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 Questions</h4>
+      <p>Use <strong>do</strong> (same as standard English): <span class="example">Do you have some?</span></p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 Compound words</h4>
+      <p>Combine two nouns or noun + preposition: <span class="example">soapbox</span>, <span class="example">sunup</span>, <span class="example">daybreak</span></p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 International & Technical Words</h4>
+      <p>International words (radio, telephone, hotel) keep their form. Technical terms go in 'quotation marks' and are explained in Basic.</p>
+    </div>
+    <div class="grammar-box">
+      <h4>📌 Pronouns & Operator Forms</h4>
+      <p>Same as standard English: <span class="example">I go → He goes</span>, <span class="example">I have → She has</span></p>
+    </div>
+  </div>
+
+  <!-- ============= 18 OPERATORS ============= -->
+  <div class="card" id="verbs">
+    <h2><span class="icon" style="background:rgba(243,63,94,0.15)">🔧</span> 3. The 18 Operators (Core Verbs)</h2>
+
+    <p style="color:var(--text2); margin-bottom:14px;">
+      Ogden's most revolutionary idea: <strong>there are no 'verbs' in Basic English</strong>. Instead, 18 "operators" combine with nouns and prepositions to replace about <strong>4,000 standard English verbs</strong>.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Operator</th><th>Example in Basic</th><th>Replaces (standard verb)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>come</strong></td><td>come to an end</td><td>finish, conclude</td></tr>
+          <tr><td><strong>get</strong></td><td>get a look at</td><td>view, observe</td></tr>
+          <tr><td><strong>give</strong></td><td>give a cry</td><td>shout, scream</td></tr>
+          <tr><td><strong>go</strong></td><td>go into</td><td>enter, explore</td></tr>
+          <tr><td><strong>keep</strong></td><td>keep in mind</td><td>remember</td></tr>
+          <tr><td><strong>let</strong></td><td>let go</td><td>release</td></tr>
+          <tr><td><strong>make</strong></td><td>make ready</td><td>prepare</td></tr>
+          <tr><td><strong>put</strong></td><td>put in order</td><td>arrange, organize</td></tr>
+          <tr><td><strong>seem</strong></td><td>seem good</td><td>appear</td></tr>
+          <tr><td><strong>take</strong></td><td>take part</td><td>participate</td></tr>
+          <tr><td><strong>be</strong></td><td>be present</td><td>exist, attend</td></tr>
+          <tr><td><strong>do</strong></td><td>do harm</td><td>damage, injure</td></tr>
+          <tr><td><strong>have</strong></td><td>have a desire for</td><td>want, wish</td></tr>
+          <tr><td><strong>say</strong></td><td>say no</td><td>refuse, deny</td></tr>
+          <tr><td><strong>see</strong></td><td>see to</td><td>arrange, handle</td></tr>
+          <tr><td><strong>send</strong></td><td>send word</td><td>notify, message</td></tr>
+          <tr><td><strong>may</strong></td><td>may be</td><td>possibly</td></tr>
+          <tr><td><strong>will</strong></td><td>will do</td><td>future action</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:12px; background:rgba(255,255,255,0.02); padding:14px; border-radius:8px;">
+      <p style="color:var(--text2); font-size:0.9em;">
+        <strong>Examples:</strong><br>
+        Instead of "I <strong>entered</strong> the room" → "I <strong>went into</strong> the room"<br>
+        Instead of "I <strong>prepared</strong> dinner" → "I <strong>made ready</strong> the dinner"<br>
+        Instead of "I <strong>refused</strong> the offer" → "I <strong>said no</strong> to the offer"
+      </p>
+    </div>
+  </div>
+
+  <!-- ============= 850 WORDS ============= -->
+  <div class="card" id="words">
+    <h2><span class="icon" style="background:rgba(59,130,246,0.15)">📚</span> 4. The 850 Core Words (Complete)</h2>
+
+    <h3>Operations (100 words)</h3>
+    <p style="color:var(--text3); font-size:0.85em; margin-bottom:8px;">18 operators + 82 grammatical words</p>
+
+    <div style="margin-bottom:16px;">
+      <strong style="font-size:0.88em; color:var(--accent3);">🔧 18 Operators (verbs):</strong>
+      <div class="word-grid" style="margin-top:6px;">
+        <span class="word-tag verb">come</span><span class="word-tag verb">get</span><span class="word-tag verb">give</span>
+        <span class="word-tag verb">go</span><span class="word-tag verb">keep</span><span class="word-tag verb">let</span>
+        <span class="word-tag verb">make</span><span class="word-tag verb">put</span><span class="word-tag verb">seem</span>
+        <span class="word-tag verb">take</span><span class="word-tag verb">be</span><span class="word-tag verb">do</span>
+        <span class="word-tag verb">have</span><span class="word-tag verb">say</span><span class="word-tag verb">see</span>
+        <span class="word-tag verb">send</span><span class="word-tag verb">may</span><span class="word-tag verb">will</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <strong style="font-size:0.88em; color:var(--accent4);">📌 Directives (prepositions):</strong>
+      <div class="word-grid" style="margin-top:6px;">
+        <span class="word-tag gram">about</span><span class="word-tag gram">across</span><span class="word-tag gram">after</span>
+        <span class="word-tag gram">against</span><span class="word-tag gram">among</span><span class="word-tag gram">at</span>
+        <span class="word-tag gram">before</span><span class="word-tag gram">between</span><span class="word-tag gram">by</span>
+        <span class="word-tag gram">down</span><span class="word-tag gram">from</span><span class="word-tag gram">in</span>
+        <span class="word-tag gram">off</span><span class="word-tag gram">on</span><span class="word-tag gram">over</span>
+        <span class="word-tag gram">through</span><span class="word-tag gram">to</span><span class="word-tag gram">under</span>
+        <span class="word-tag gram">up</span><span class="word-tag gram">with</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <strong style="font-size:0.88em; color:var(--accent4);">🔗 Conjunctions, Pronouns, Adverbs & Other Grammatical Words:</strong>
+      <div class="word-grid" style="margin-top:6px;">
+        <span class="word-tag gram">as</span><span class="word-tag gram">for</span><span class="word-tag gram">of</span>
+        <span class="word-tag gram">till</span><span class="word-tag gram">than</span><span class="word-tag gram">and</span>
+        <span class="word-tag gram">because</span><span class="word-tag gram">but</span><span class="word-tag gram">or</span>
+        <span class="word-tag gram">if</span><span class="word-tag gram">though</span><span class="word-tag gram">while</span>
+        <span class="word-tag gram">how</span><span class="word-tag gram">when</span><span class="word-tag gram">where</span>
+        <span class="word-tag gram">why</span><span class="word-tag gram">again</span><span class="word-tag gram">ever</span>
+        <span class="word-tag gram">far</span><span class="word-tag gram">forward</span><span class="word-tag gram">here</span>
+        <span class="word-tag gram">near</span><span class="word-tag gram">now</span><span class="word-tag gram">out</span>
+        <span class="word-tag gram">still</span><span class="word-tag gram">then</span><span class="word-tag gram">there</span>
+        <span class="word-tag gram">together</span><span class="word-tag gram">well</span><span class="word-tag gram">almost</span>
+        <span class="word-tag gram">enough</span><span class="word-tag gram">even</span><span class="word-tag gram">not</span>
+        <span class="word-tag gram">only</span><span class="word-tag gram">quite</span><span class="word-tag gram">so</span>
+        <span class="word-tag gram">very</span><span class="word-tag gram">tomorrow</span><span class="word-tag gram">yesterday</span>
+        <span class="word-tag gram">north</span><span class="word-tag gram">south</span><span class="word-tag gram">east</span>
+        <span class="word-tag gram">west</span><span class="word-tag gram">please</span><span class="word-tag gram">yes</span>
+        <span class="word-tag gram">a</span><span class="word-tag gram">the</span><span class="word-tag gram">all</span>
+        <span class="word-tag gram">any</span><span class="word-tag gram">every</span><span class="word-tag gram">little</span>
+        <span class="word-tag gram">much</span><span class="word-tag gram">no</span><span class="word-tag gram">other</span>
+        <span class="word-tag gram">some</span><span class="word-tag gram">such</span><span class="word-tag gram">that</span>
+        <span class="word-tag gram">this</span><span class="word-tag gram">I</span><span class="word-tag gram">he</span>
+        <span class="word-tag gram">you</span><span class="word-tag gram">who</span>
+      </div>
+    </div>
+
+    <h3>Things — General (400 words)</h3>
+    <p style="color:var(--text3); font-size:0.85em; margin-bottom:8px;">Abstract and concrete nouns for everyday life, business, science.</p>
+    <div class="word-grid">
+      <span class="word-tag noun">account</span><span class="word-tag noun">act</span><span class="word-tag noun">addition</span>
+      <span class="word-tag noun">adjustment</span><span class="word-tag noun">advertisement</span><span class="word-tag noun">agreement</span>
+      <span class="word-tag noun">air</span><span class="word-tag noun">amount</span><span class="word-tag noun">amusement</span>
+      <span class="word-tag noun">animal</span><span class="word-tag noun">answer</span><span class="word-tag noun">apparatus</span>
+      <span class="word-tag noun">approval</span><span class="word-tag noun">argument</span><span class="word-tag noun">art</span>
+      <span class="word-tag noun">attack</span><span class="word-tag noun">attempt</span><span class="word-tag noun">attention</span>
+      <span class="word-tag noun">back</span><span class="word-tag noun">balance</span><span class="word-tag noun">base</span>
+      <span class="word-tag noun">behavior</span><span class="word-tag noun">belief</span><span class="word-tag noun">birth</span>
+      <span class="word-tag noun">blood</span><span class="word-tag noun">body</span><span class="word-tag noun">bread</span>
+      <span class="word-tag noun">business</span><span class="word-tag noun">care</span><span class="word-tag noun">cause</span>
+      <span class="word-tag noun">change</span><span class="word-tag noun">color</span><span class="word-tag noun">condition</span>
+      <span class="word-tag noun">control</span><span class="word-tag noun">country</span><span class="word-tag noun">credit</span>
+      <span class="word-tag noun">crime</span><span class="word-tag noun">damage</span><span class="word-tag noun">danger</span>
+      <span class="word-tag noun">death</span><span class="word-tag noun">decision</span><span class="word-tag noun">design</span>
+      <span class="word-tag noun">development</span><span class="word-tag noun">direction</span><span class="word-tag noun">discovery</span>
+      <span class="word-tag noun">discussion</span><span class="word-tag noun">disease</span><span class="word-tag noun">education</span>
+      <span class="word-tag noun">effect</span><span class="word-tag noun">error</span><span class="word-tag noun">event</span>
+      <span class="word-tag noun">example</span><span class="word-tag noun">exchange</span><span class="word-tag noun">existence</span>
+      <span class="word-tag noun">experience</span><span class="word-tag noun">fact</span><span class="word-tag noun">family</span>
+      <span class="word-tag noun">force</span><span class="word-tag noun">form</span><span class="word-tag noun">friend</span>
+      <span class="word-tag noun">government</span><span class="word-tag noun">growth</span><span class="word-tag noun">help</span>
+      <span class="word-tag noun">history</span><span class="word-tag noun">idea</span><span class="word-tag noun">industry</span>
+      <span class="word-tag noun">interest</span><span class="word-tag noun">invention</span><span class="word-tag noun">knowledge</span>
+      <span class="word-tag noun">language</span><span class="word-tag noun">law</span><span class="word-tag noun">learning</span>
+      <span class="word-tag noun">letter</span><span class="word-tag noun">level</span><span class="word-tag noun">love</span>
+      <span class="word-tag noun">machine</span><span class="word-tag noun">manager</span><span class="word-tag noun">market</span>
+      <span class="word-tag noun">measure</span><span class="word-tag noun">meeting</span><span class="word-tag noun">memory</span>
+      <span class="word-tag noun">money</span><span class="word-tag noun">month</span><span class="word-tag noun">motion</span>
+      <span class="word-tag noun">music</span><span class="word-tag noun">name</span><span class="word-tag noun">nation</span>
+      <span class="word-tag noun">news</span><span class="word-tag noun">note</span><span class="word-tag noun">number</span>
+      <span class="word-tag noun">opinion</span><span class="word-tag noun">order</span><span class="word-tag noun">pain</span>
+      <span class="word-tag noun">paper</span><span class="word-tag noun">part</span><span class="word-tag noun">payment</span>
+      <span class="word-tag noun">peace</span><span class="word-tag noun">person</span><span class="word-tag noun">place</span>
+      <span class="word-tag noun">plant</span><span class="word-tag noun">play</span><span class="word-tag noun">pleasure</span>
+      <span class="word-tag noun">point</span><span class="word-tag noun">position</span><span class="word-tag noun">power</span>
+      <span class="word-tag noun">price</span><span class="word-tag noun">process</span><span class="word-tag noun">profit</span>
+      <span class="word-tag noun">property</span><span class="word-tag noun">prose</span><span class="word-tag noun">protest</span>
+      <span class="word-tag noun">purpose</span><span
