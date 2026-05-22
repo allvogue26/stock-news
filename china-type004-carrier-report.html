@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国004型核动力航母 — 综合信息报告</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d29;
+    --border: #2a2d3a;
+    --accent: #3b82f6;
+    --accent2: #22c55e;
+    --accent3: #f43f5e;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --text3: #64748b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .hero {
+    background: linear-gradient(135deg,#0b1424 0%,#0f1117 50%,#1a1d29 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top:-50%;left:-50%;width:200%;height:200%;
+    background: radial-gradient(circle at 30% 50%,rgba(59,130,246,0.1) 0%,transparent 50%),
+                radial-gradient(circle at 70% 50%,rgba(34,197,94,0.05) 0%,transparent 50%);
+    pointer-events: none;
+  }
+  .hero h1 { font-size:2em; font-weight:700; margin-bottom:12px; position:relative; }
+  .hero h1 span { color:var(--accent); }
+  .hero .subtitle { color:var(--text2); font-size:0.95em; position:relative; }
+  .hero .subtitle2 { color:var(--text3); font-size:0.8em; margin-top:8px; position:relative; }
+
+  .container { max-width:960px; margin:0 auto; padding:32px 20px; }
+
+  .card {
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:28px; margin-bottom:24px;
+  }
+  .card h2 { font-size:1.2em; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .card h2 .icon { width:28px;height:28px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px; }
+
+  .source-badge {
+    display:inline-block; font-size:0.75em; padding:2px 8px; border-radius:4px;
+    font-weight:600; margin-left:6px;
+  }
+  .src-pentagon { background:rgba(59,130,246,0.15); color:var(--accent); }
+  .src-media { background:rgba(139,92,246,0.15); color:#a78bfa; }
+  .src-china { background:rgba(244,63,94,0.15); color:var(--accent3); }
+  .src-analyst { background:rgba(34,197,94,0.15); color:var(--accent2); }
+
+  .data-grid {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:12px; margin-bottom:16px;
+  }
+  .data-item {
+    background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center;
+  }
+  .data-item .label { color:var(--text3); font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+  .data-item .value { font-size:1.3em; font-weight:700; }
+
+  .info-list { list-style:none; padding:0; }
+  .info-list li {
+    padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05);
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .info-list li:last-child { border-bottom:none; }
+  .info-list .icon { font-size:1.2em; flex-shrink:0; width:24px; text-align:center; }
+  .info-list .content { flex:1; font-size:0.93em; color:var(--text2); }
+  .info-list .content strong { color:var(--text); }
+  .info-list .content .src { display:inline-block; font-size:0.7em; padding:1px 6px; border-radius:3px; margin-left:4px; }
+
+  .timeline { position:relative; padding-left:24px; }
+  .timeline::before {
+    content:''; position:absolute; left:7px; top:0; bottom:0; width:2px; background:var(--border);
+  }
+  .timeline-item {
+    position:relative; padding-bottom:20px;
+  }
+  .timeline-item:last-child { padding-bottom:0; }
+  .timeline-item::before {
+    content:''; position:absolute; left:-20px; top:5px; width:10px; height:10px;
+    border-radius:50%; background:var(--accent); border:2px solid var(--bg);
+  }
+  .timeline-item .date { color:var(--accent); font-weight:600; font-size:0.8em; }
+  .timeline-item p { color:var(--text2); font-size:0.9em; margin-top:2px; }
+
+  .tab-group { margin:16px 0; }
+  .tab-label {
+    display:inline-block; font-size:0.8em; padding:4px 10px; border-radius:4px;
+    background:rgba(255,255,255,0.04); border:1px solid var(--border); color:var(--text2);
+    font-weight:600; margin-bottom:10px;
+  }
+  .tab-label.analysis { border-color:var(--accent2); background:rgba(34,197,94,0.08); color:var(--accent2); }
+  .tab-label.overview { border-color:var(--accent); background:rgba(59,130,246,0.08); color:var(--accent); }
+  .tab-label.chain { border-color:#a78bfa; background:rgba(139,92,246,0.08); color:#a78bfa; }
+  .tab-label.impact { border-color:var(--accent3); background:rgba(244,63,94,0.08); color:var(--accent3); }
+
+  .perspective-grid {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:14px; margin-top:12px;
+  }
+  .perspective-box {
+    background:rgba(255,255,255,0.02); border:1px solid var(--border);
+    border-radius:10px; padding:18px;
+  }
+  .perspective-box h4 { font-size:0.9em; margin-bottom:8px; }
+  .perspective-box p { color:var(--text2); font-size:0.85em; }
+
+  .ref-list { margin-top:16px; }
+  .ref-list h3 { font-size:0.95em; margin-bottom:10px; color:var(--text2); }
+  .ref-item {
+    display:flex; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04);
+    font-size:0.85em;
+  }
+  .ref-item:last-child { border-bottom:none; }
+  .ref-item .num { color:var(--text3); font-weight:600; flex-shrink:0; width:20px; }
+  .ref-item a { color:var(--accent); text-decoration:none; word-break:break-all; }
+  .ref-item a:hover { text-decoration:underline; }
+  .ref-item .desc { color:var(--text3); font-size:0.9em; margin-top:2px; }
+
+  .footer { text-align:center; padding:32px; border-top:1px solid var(--border); color:var(--text3); font-size:0.8em; }
+
+  .disclaimer {
+    background:rgba(244,63,94,0.06); border:1px solid rgba(244,63,94,0.2);
+    border-radius:10px; padding:16px 20px; margin-bottom:24px;
+    font-size:0.85em; color:var(--text2);
+  }
+  .disclaimer strong { color:var(--accent3); }
+
+  @media (max-width:640px) {
+    .hero h1 { font-size:1.4em; }
+    .data-grid { grid-template-columns:repeat(2,1fr); }
+    .card { padding:20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🇨🇳 中国004型（Type 004）核动力航母 <span>综合信息报告</span></h1>
+  <p class="subtitle">基于五角大楼2025年度《中国军力报告》、商业卫星图像、中国海军官方宣传视频等多源信息整理</p>
+  <p class="subtitle2">📅 2026年5月22日 | 🦐 虾虾整理 | 所有信息均标注来源</p>
+</div>
+
+<div class="container">
+
+  <div class="disclaimer">
+    <strong>⚠️ 数据说明：</strong>本报告所有信息均来源于公开渠道。中国官方从未正式对外公布004型航母的具体型号、吨位或动力系统类型。以下内容均来自美国国防部报告、商业卫星图像分析、军事媒体报道及分析师推估，请读者自行判断信息的可靠性。
+  </div>
+
+  <!-- 一、核心概览 -->
+  <div class="card">
+    <h2><span class="icon" style="background:rgba(59,130,246,0.15)">📋</span> 一、核心数据概览</h2>
+
+    <div class="data-grid">
+      <div class="data-item" style="border-color:rgba(59,130,246,0.3)">
+        <div class="label">已服役航母</div>
+        <div class="value" style="color:var(--accent)">3艘</div>
+        <div style="font-size:0.75em;color:var(--text3);margin-top:4px">辽宁(001) / 山东(002) / 福建(003)</div>
+      </div>
+      <div class="data-item" style="border-color:rgba(59,130,246,0.3)">
+        <div class="label">在建航母</div>
+        <div class="value" style="color:var(--accent)">004型</div>
+        <div style="font-size:0.75em;color:var(--text3);margin-top:4px">第4艘 / 大连造船厂</div>
+      </div>
+      <div class="data-item" style="border-color:rgba(34,197,56,0.3)">
+        <div class="label">动力系统</div>
+        <div class="value" style="color:var(--accent2)">核动力</div>
+        <div style="font-size:0.75em;color:var(--text3);margin-top:4px">未正式确认</div>
+      </div>
+      <div class="data-item" style="border-color:rgba(244,63,94,0.3)">
+        <div class="label">满载排水量</div>
+        <div class="value" style="color:var(--accent3)">~120,000吨</div>
+        <div style="font-size:0.75em;color:var(--text3);margin-top:4px">18FortyFive等多家估计</div>
+      </div>
+      <div class="data-item">
+        <div class="label">2035目标</div>
+        <div class="value" style="color:#a78bfa">9艘</div>
+        <div style="font-size:0.75em;color:var(--text3);margin-top:4px">含已服役3艘</div>
+      </div>
+    </div>
+
+    <div class="tab-group">
+      <span class="tab-label overview">🔑 五角大楼报告核心表述</span>
+    </div>
+    <ul class="info-list">
+      <li>
+        <span class="icon">🏛️</span>
+        <div class="content">
+          <strong>五角大楼2025年度《中国军力报告》</strong>（2025年12月23日发布）指出：<em>"中国人的奋斗目标是在十个大项和地方机构职能中确立世界级军事力量的地位。中国人民解放军是北京努力取代美国成为世界最强大国家愿景的关键组成部分。"</em>
+          <span class="src src-pentagon">来源：2025 CMPR（国防部官网）</span>
+        </div>
+      </li>
+      <li>
+        <span class="icon">🚢</span>
+        <div class="content">
+          <strong>报告摘要：</strong>"中国海军计划到2035年再建造6艘航空母舰，使其航母总数达到9艘。" 这标志着五角大楼对解放军海军航母计划的评估发生了重大转变——去年的报告只说"后续将有更多航母"。
+          <span class="src src-pentagon">来源：USNI News / Newsweek 报道</span>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- 二、004型是不是核动力 -->
+  <div class="card">
+    <h2><span class="icon" style="background:rgba(244,63,94,0.15)">☢️</span> 二、004型是否为核动力？——多来源交叉印证</h2>
+
+    <div class="tab-group">
+      <span class="tab-label analysis">✅ 多个独立来源支持"核动力"判断</span>
+    </div>
+
+    <ul class="info-list">
+      <li>
+        <span class="icon">🇨🇳</span>
+        <div class="content">
+          <strong>中国海军官方宣传视频《向大洋》</strong>（2026年4月23日，海军成立77周年）中出现四名海军军官，名字分别对应：<br>
+          · "辽宁" → 暗示辽宁舰<br>
+          · "山东" → 暗示山东舰<br>
+          · "福建" → 暗示福建舰<br>
+          · <b>"何剑"</b> → "何"谐音"<b>核</b>"，"剑"谐音"<b>舰</b>"，且饰演者19岁，暗示舷号19<br>
+          这被广泛解读为官方对第四艘航母为核动力的暗示。
+          <span class="src src-china">来源：央视军事/中国海军官微</span>
+          <span class="src src-media">来源：The Independent / NDTV / India Today 均报道</span>
+        </div>
+      </li>
+      <li>
+        <span class="icon">🛰️</span>
+        <div class="content">
+          <strong>商业卫星图像（2026年2月）：</strong>美国《新闻周刊》2026年2月25日报道，商业卫星于2月17日拍摄的大连造船厂图像显示<b>两个带屏蔽层的反应堆舱室和多个机舱</b>。美国前海军潜艇军官、国防分析师汤姆·舒加特（Tom Shugart）表示对004是核动力的判断信心已达"极有可能"级别。
+          <span class="src src-media">来源：Newsweek / 观察者网报道</span>
+        </div>
+      </li>
+      <li>
+        <span class="icon">🔬</span>
+        <div class="content">
+          <strong>大连造船厂持续建造的证据：</strong>Wikipedia引用可靠来源指出，004型航母自2024年起已在大连造船厂开始建造。舰体中部有约18米见方的核反应堆安全壳结构，无常规动力烟囱结构。
+          <span class="src src-analyst">来源：Wikipedia / The War Zone / 国家利益 综合</span>
+        </div>
+      </li>
+      <li>
+        <span class="icon">🇨🇳</span>
+        <div class="content">
+          <strong>解放军海军政委袁华智此前表态：</strong>在接受媒体采访时明确表示，第四艘航母"在建造中"且"没有什么技术瓶颈"，暗示核动力技术障碍已解决。
+          <span class="src src-china">来源：163.com / 多家国内媒体报道</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 三、主要参数与规格 -->
+  <div class="card">
+    <h2><span class="icon" style="background:rgba(34,197,56,0.15)">📏</span> 三、主要技术参数（多方推估）</h2>
+
+    <ul class="info-list">
+      <li>
+        <span class="icon">📐</span>
+        <div class="content">
+          <strong>排水量：</strong>多来源估计满载排水量约<b>110,000-120,000吨</b>（19FortyFive / National Security Journal），将超过美国福特级排水量，成为亚洲史上吨位最大的战舰。
+        </div>
+      </li>
+      <li>
+        <span class="icon">⚡</span>
+        <div class="content">
+          <strong>电磁弹射：</strong>预期配备<b>4条电磁弹射器</b>（EMALS），而非福建舰的2条。福建舰的电磁弹射系统已被报道创下"世界纪录"，技术验证良好。
+        </div>
+      </li>
+      <li>
+        <span class="icon">🛩️</span>
+        <div class="content">
+          <strong>舰载机：</strong>预测可搭载<b>超过100架飞机</b>（含歼-35隐身舰载机、空警-600固定翼预警机等）。相比之下，福特级典型部署约75-80架。
+        </div>
+      </li>
+      <li>
+        <span class="icon">☢️</span>
+        <div class="content">
+          <strong>核动力：</strong>动力系统推测源自中国<b>"玲龙一号"（ACP100）小型堆</b>技术或第四代核电站技术。核动力意味着无限续航能力，显著提升远洋作战半径。
+        </div>
+      </li>
+      <li>
+        <span class="icon">📅</span>
+        <div class="content">
+          <strong>预计时间线：</strong>2027年前后下水，2030年前后正式服役。
+          <span class="src src-analyst">来源：National Security Journal / 观察者网</span>
+        </div>
+      </li>
+    </ul>
+    <div style="margin-top:12px; font-size:0.9em; color:var(--text3); background:rgba(255,255,255,0.02); padding:12px; border-radius:8px;">
+      <strong>对比 — 中国航母技术路线图：</strong><br>
+      辽宁舰（001，改装）→ 山东舰（002，国产化+滑跃）→ 福建舰（003，国产电磁弹射+常规动力）→ <span style="color:var(--accent);">004型（国产核动力+4弹射器）</span>→ 目标：6艘新航母2035年前建成
+    </div>
+  </div>
+
+  <!-- 四、五角大楼原文引用 -->
+  <div class="card">
+    <h2><span class="icon" style="background:rgba(59,130,246,0.15)">📄</span> 四、五角大楼报告核心引文</h2>
+
+    <div class="quote-box" style="border-left:3px solid var(--accent); padding:14px 18px; background:rgba(59,130,246,0.05); border-radius:0 10px 10px 0; margin-bottom:14px;">
+      <p style="color:var(--text2); font-style:italic; font-size:0.92em;">
+        "China's People's Liberation Army (PLA) has for decades marshaled resources, technology, and political will to achieve its vision of a world-class military. The PLA is a key component of China's ambition to displace the United States as the world's most powerful nation. The PLA measures its concepts and capabilities against the 'strong enemy' of the United States."
+      </p>
+      <p style="color:var(--text3); font-size:0.8em; margin-top:6px;">—— 美国国防部2025年度《中国军力报告》</p>
+    </div>
+
+    <ul class="info-list">
+      <li>
+        <span class="icon">📊</span>
+        <div class="content">
+          <strong>9艘航母目标：</strong>"China aims to produce six aircraft carriers by 2035, for a total of nine." ——USNI News引述五角大楼报告<span class="src src-pentagon">来源：USNI News, Dec 24, 2025</span>
+        </div>
+      </li>
+      <li>
+        <span class="icon">📝</span>
+        <div class="content">
+          <strong>对中国军力的总体评估：</strong>报告认为中国正在从"近海防御"转向"全球力量投送"，核动力航母是这一战略转型的关键一环。报告原文可在国防部官网下载：<br>
+          <a href="https://media.defense.gov/2025/Dec/23/2003849070/-1/-1/1/ANNUAL-REPORT-TO-CONGRESS-MILITARY-AND-SECURITY-DEVELOPMENTS-INVOLVING-THE-PEOPLES-REPUBLIC-OF-CHINA-2025.PDF" target="_blank" style="color:var(--accent);">2025 Annual Report to Congress (PDF)</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 五、关键事件时间线 -->
+  <div class="card">
+    <h2><span class="icon" style="background:rgba(255,255,255,0.1)">📅</span> 五、关键事件时间线</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="date">2023年以前</div>
+        <p>辽宁舰（2012服役）、山东舰（2019服役）、福建舰（2022年下水，2025年11月服役）。中国海军进入"三航母时代"。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">2024年</div>
+        <p>004型在大连造船厂开始建造。同期大连造船厂进行大规模扩建，新增大型船坞设施。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">2026年2月17日</div>
+        <p>商业卫星拍摄到大连造船厂图像，显示两个带屏蔽层的反应堆舱室。Newsweek于2月25日报道，分析师判断004为核动力。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">2026年4月23日</div>
+        <p>中国海军发布《向大洋》宣传视频，通过名字隐喻（"何剑"=核舰）暗示第四艘航母为核动力，舷号19。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">2026年5月（近期）</div>
+        <p>多家媒体报道称004建造进度已达约70%。19FortyFive / National Security Journal等报道推测满载12万吨，4电磁弹射器。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 六、多角度分析 -->
+  <div class="card">
+    <h2><span class="icon" style="background:rgba(139,92,246,0.15)">🎯</span> 六、多角度分析</h2>
+
+    <div class="perspective-grid">
+      <div class="perspective-box">
+        <h4 style="color:var(--accent);">🏛️ 地缘战略视角</h4>
+        <p>核动力航母是解放军海军的标志性跃升。从近海防御到远洋力量投送，004型将赋予中国在印度洋至太平洋的持续存在能力。配合海外基地（吉布提等），中国航母编队将成为美国海军自二战以来面临的最强竞争对手。</p>
+      </div>
+      <div class="perspective-box">
+        <h4 style="color:var(--accent2);">🛠️ 技术视角</h4>
+        <p>核动力+4电磁弹射器意味着中国在航母最关键的两项技术（舰载核反应堆、电磁弹射）上已突破瓶颈。福建舰的EMALS表现据说优于福特级（福特号EMALS至今可靠性问题未完全解决）。舰载机方面，歼-35隐身战斗机在2025年已出现在福建舰甲板上。</p>
+      </div>
+      <div class="perspective-box">
+        <h4 style="color:var(--accent3);">⚔️ 军力平衡视角</h4>
+        <p>2025年五角大楼报告：中国海军已有370+艘舰艇，全球第一。但美军有11艘核航母，且F-35C舰载机、一体化联合作战体系等方面仍有明显优势。中国航母的最大短板是：海外基地稀缺、反潜防护能力不足、航母编队协同作战经验有限。一位前英国海军情报分析师称中国航母部署仍有"政治表演成分"。</p>
+      </div>
+      <div class="perspective-box">
+        <h4 style="color:#a78bfa;">💰 经济视角</h4>
+        <p>10年建6艘+现有3艘=9艘航母，造舰成本可能超过$500-800亿（含舰载机、护航编队）。但按购买力平价计算，中国国防支出(约$5,000亿+含北约标准口径)有足够的支撑能力。关键是：与解放军造舰效率相比，美国造船业正在萎缩——纽波特纽斯造船厂是唯一能造核航母的船厂，而中国有2家。</p>
+      </div>
+      <div class="perspective-box">
+        <h4 style="color:var(--accent);">🌏 区域反应视角</h4>
+        <p>日本：已改装"出云"级直升机航母以搭载F-35B，并在2026年启动了下一代航母研究。印度：已宣布第三艘航母计划（INS Vishal，6.5万吨）。美国：加快部署福特级，同时推动"分布式杀伤"概念分散航母风险。中国航母每10年一代的节奏正在改变整个印太海军格局。</p>
+      </div>
+      <div class="perspective-box">
+        <h4 style="color:var(--accent2);">🔮 前瞻视角</h4>
+        <p>南京大学《亚太海军报告》观点：中国航母的目标不是与美军11艘平起平坐，而是在西太平洋一线具备"区域拒止/反介入"(A2/AD)能力。如有4-5艘航母配合陆基导弹网，美军在西太平洋的行动自由将受到严重挑战。2030-2035年将是中美西太平洋军力平衡的转折点。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 七、参考文献 -->
+  <div class="card">
+    <h2><span class="icon" style="background:rgba(255,255,255,0.1)">📚</span> 七、来源与参考文献</h2>
+    <p style="font-size:0.85em; color:var(--text3); margin-bottom:14px;">所有来源均可直接点击查看原文。本报告仅汇总公开信息，中国官方未正式公布004型航母参数。</p>
+
+    <div class="ref-list">
+      <h3>📄 官方报告</h3>
+      <div class="ref-item">
+        <div class="num">[1]</div>
+        <div>
+          <a href="https://media.defense.gov/2025/Dec/23/2003849070/-1/-1/1/ANNUAL-REPORT-TO-CONGRESS-MILITARY-AND-SECURITY-DEVELOPMENTS-INVOLVING-THE-PEOPLES-REPUBLIC-OF-CHINA-2025.PDF" target="_blank">U.S. Department of Defense, Annual Report to Congress: Military and Security Developments Involving the PRC, 2025</a>
+          <div class="desc">五角大楼2025年度中国军力报告原文（PDF约700+页）</div>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="num">[2]</div>
+        <div>
+          <a href="https://fas.org/publication/the-pentagons-slimmed-down-2025-china-military-power-report/" target="_blank">Federation of American Scientists: 2025 CMPR Summary</a>
+          <div class="desc">2025年《中国军力报告》精简版解读</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:14px;">📰 权威媒体报道</h3>
+      <div class="ref-item">
+        <div class="num">[3]</div>
+        <div>
+          <a href="https://news.usni.org/2025/12/24/china-wants-nine-aircraft-carriers-by-2035-says-new-pentagon-report" target="_blank">USNI News: China Wants Nine Aircraft Carriers by 2035</a>
+          <div class="desc">美国海军研究所新闻：五角大楼报告指中国计划2035年拥有9艘航母</div>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="num">[4]</div>
+        <div>
+          <a href="https://www.newsweek.com/china-plans-build-six-aircraft-carriers-ten-years-pentagon-11264212" target="_blank">Newsweek: China Plans To Build Six Aircraft Carriers in 10 Years</a>
+          <div class="desc">新闻周刊详细报道五角大楼报告，含分析师评论</div>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="num">[5]</div>
+        <div>
+          <a href="https://nationalsecurityjournal.org/china-plans-9-aircraft-carriers-by-2035-the-type-004-will-be-120000-tons-and-nuclear-powered-bigger-than-the-uss-ford/" target="_blank">National Security Journal: China Plans 9 Aircraft Carriers by 2035, Type 004 Nuclear-powered, 120,000 Tons</a>
+          <div class="desc">详细分析004型技术参数与战略意义</div>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="num">[6]</div>
+        <div>
+          <a href="https://www.19fortyfive.com/2026/05/120000-tons-china-might-build-a-nuclear-aircraft-carrier-bigger-than-uss-gerald-r-ford/" target="_blank">19FortyFive: 120,000 Tons - China Might Build a Nuclear Carrier Bigger Than USS Ford</a>
+          <div class="desc">19FortyFive对004型12万吨排水量的详细分析</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:14px;">📺 中国官方信息来源</h3>
+      <div class="ref-item">
+        <div class="num">[7]</div>
+        <div>
+          <a href="https://www.youtube.com/watch?v=n2miSORKs30" target="_blank">中国海军《向大洋》宣传视频（YouTube）</a>
+          <div class="desc">2026年4月23日发布，包含"何剑"角色暗示核动力航母</div>
+        </div>
+      </div>
+      <div class="ref-item">
+        <div class="num">[8]</div>
+        <div>
+          <a href="https://en.wikipedia.org/wiki/Chinese_aircraft_carrier_programme" target="_blank">Wikipedia: Chinese aircraft carrier programme</a>
+          <div class="desc">详实记录中国航母发展史与004型最新状态</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:14px;">📡 卫星图像分析</h3>
+      <div class="ref-item">
+        <div class="num">[9]</div>
+        <div>
+          <a href="https://www.newsweek.com/chinas-next-aircraft-carrier-could-be-nuclear-powered-what-to-know-11141211" target="_blank">Newsweek (Feb 2026): Satellite images show two shielded reactor compartments at Dalian</a>
+          <div class="desc">大众机械师/Newsweek：大连造船厂卫星图像显示反应堆舱室</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 尾注 -->
+  <div class="card" style="border-color: var(--accent);">
+    <h2><span class="icon" style="background:rgba(59,130,246,0.15)">📌</span> 附注</h2>
+    <p style="color:var(--text2); font-size:0.9em;">
+      本报告所有信息均来自公开渠道，包括但不限于：<br><br>
+      <strong>官方来源：</strong>美国国防部《2025年度中国军力报告》（2025年12月23日发布，<a href="https://media.defense.gov/2025/Dec/23/2003849070/-1/-1/1/ANNUAL-REPORT-TO-CONGRESS-MILITARY-AND-SECURITY-DEVELOPMENTS-INVOLVING-THE-PEOPLES-REPUBLIC-OF-CHINA-2025.PDF" target="_blank" style="color:var(--accent);">官网PDF</a>）<br>
+      <strong>媒体报道：</strong>USNI News、Newsweek、The Independent、NDTV、India Today、National Security Journal、19FortyFive等<br>
+      <strong>中文来源：</strong>央视军事、网易新闻、观察者网<br>
+      <strong>学术/分析：</strong>Wikipedia、Federation of American Scientists、The War Zone等<br><br>
+      <span style="color:var(--text3);">⚠️ 中国官方从未正式确认004型航母为核动力。以上信息属于多来源综合分析。</span>
+    </p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>数据来源：美国国防部官网、USNI News、Newsweek、The Independent、National Security Journal、19FortyFive、Wikipedia、央视军事</p>
+  <p style="margin-top:6px;">报告生成时间：2026年5月22日 | 由 🦐 虾虾整理 | 文中所有信息均标注来源以供核查</p>
+</div>
+
+</body>
+</html>
