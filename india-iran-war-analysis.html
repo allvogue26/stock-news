@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>伊朗战争对印度的影响 — 综合分析报告</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d29;
+    --border: #2a2d3a;
+    --accent: #e8793f;
+    --accent2: #3b82f6;
+    --accent3: #22c55e;
+    --accent4: #f43f5e;
+    --accent5: #8b5cf6;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --text3: #64748b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  /* Header */
+  .hero {
+    background: linear-gradient(135deg, #1a1d29 0%, #0f1117 50%, #1a1d29 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(232,121,63,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(59,130,246,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero .subtitle {
+    color: var(--text2);
+    font-size: 1em;
+    position: relative;
+  }
+  .hero .date {
+    color: var(--text3);
+    font-size: 0.85em;
+    margin-top: 8px;
+    position: relative;
+  }
+
+  /* Layout */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 20px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .card h2 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2 .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  /* Data grid */
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .data-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+  }
+  .data-item .label {
+    color: var(--text3);
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .data-item .value {
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+  .data-item .change {
+    font-size: 0.85em;
+    margin-top: 4px;
+  }
+  .up { color: var(--accent3); }
+  .down { color: var(--accent4); }
+
+  /* Lists */
+  .impact-list {
+    list-style: none;
+    padding: 0;
+  }
+  .impact-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .impact-list li:last-child { border-bottom: none; }
+  .impact-list .emoji {
+    font-size: 1.3em;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+  }
+  .impact-list .content { flex: 1; }
+  .impact-list .content strong { color: var(--accent); }
+  .impact-list .content .tag {
+    display: inline-block;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    font-weight: 600;
+  }
+  .tag-critic { background: rgba(244,63,94,0.15); color: var(--accent4); }
+  .tag-severe { background: rgba(232,121,63,0.15); color: var(--accent); }
+  .tag-moderate { background: rgba(59,130,246,0.15); color: var(--accent2); }
+
+  /* Section tabs */
+  .section-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .section-nav a {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: all 0.2s;
+  }
+  .section-nav a:hover {
+    background: rgba(232,121,63,0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 24px;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .timeline-item .date {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.85em;
+    margin-bottom: 4px;
+  }
+  .timeline-item p { color: var(--text2); }
+
+  /* Perspective boxes */
+  .perspective-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .perspective-box {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .perspective-box h4 {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    color: var(--accent5);
+  }
+  .perspective-box p { color: var(--text2); font-size: 0.9em; }
+
+  /* Bottom quote */
+  .quote-box {
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    background: rgba(232,121,63,0.05);
+    border-radius: 0 10px 10px 0;
+    margin: 20px 0;
+  }
+  .quote-box p { color: var(--text2); font-style: italic; }
+  .quote-box .author {
+    color: var(--text3);
+    font-size: 0.85em;
+    margin-top: 8px;
+    font-style: normal;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px;
+    border-top: 1px solid var(--border);
+    color: var(--text3);
+    font-size: 0.8em;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 1.5em; }
+    .data-grid { grid-template-columns: repeat(2, 1fr); }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🇮🇳 伊朗战争下的印度：<span>多维度全景分析</span></h1>
+  <p class="subtitle">美以对伊战争如何冲击亚洲第三大经济体 — 从能源到汇率，从外交到民生</p>
+  <p class="date">📅 2026年5月22日 更新</p>
+</div>
+
+<div class="container">
+
+  <!-- 导航 -->
+  <div class="section-nav">
+    <a href="#data">📊 核心数据</a>
+    <a href="#energy">⛽ 能源危机</a>
+    <a href="#currency">💰 汇率与金融</a>
+    <a href="#diplomacy">🏛️ 外交困境</a>
+    <a href="#economy">🏭 经济连锁</a>
+    <a href="#timeline">📅 事件线</a>
+    <a href="#perspectives">🎯 多角度分析</a>
+  </div>
+
+  <!-- 核心数据仪表盘 -->
+  <div class="card" id="data">
+    <h2><span class="icon" style="background:rgba(34,197,94,0.15)">📊</span> 核心数据一览</h2>
+    <div class="data-grid">
+      <div class="data-item">
+        <div class="label">外汇储备</div>
+        <div class="value" style="color:var(--accent3)">$6,970亿</div>
+        <div class="change up">↑ $63亿（5月8日当周）</div>
+      </div>
+      <div class="data-item">
+        <div class="label">美元/卢比汇率</div>
+        <div class="value" style="color:var(--accent4)">95.59</div>
+        <div class="change down">↓ 年内贬值 7%+</div>
+      </div>
+      <div class="data-item">
+        <div class="label">布伦特原油</div>
+        <div class="value" style="color:var(--accent)">~$110</div>
+        <div class="change down">↑ 战争以来大幅攀升</div>
+      </div>
+      <div class="data-item">
+        <div class="label">Nifty 50</div>
+        <div class="value" style="color:var(--accent4)">约23,380</div>
+        <div class="change down">↓ 较高点跌超10%</div>
+      </div>
+      <div class="data-item">
+        <div class="label">外资流出</div>
+        <div class="value" style="color:var(--accent4)">$230亿</div>
+        <div class="change down">2026年至今</div>
+      </div>
+      <div class="data-item">
+        <div class="label">经常账户赤字</div>
+        <div class="value" style="color:var(--accent)">~GDP 2%+</div>
+        <div class="change down">持续扩大</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. 能源危机 ⛽ -->
+  <div class="card" id="energy">
+    <h2><span class="icon" style="background:rgba(232,121,63,0.15)">⛽</span> 能源危机 — 最直接的冲击</h2>
+    <ul class="impact-list">
+      <li>
+        <span class="emoji">🛢️</span>
+        <div class="content">
+          <strong>石油依赖度高</strong> — 印度是全球第三大石油进口国，<span class="tag tag-critic">严重</span>90%的石油依赖进口，约一半通过<b>霍尔木兹海峡</b>运输
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🚫</span>
+        <div class="content">
+          <strong>霍尔木兹海峡关闭</strong> — 4月19日伊朗封锁海峡，印度石油供应急剧短缺，布伦特原油冲至约$110/桶
+        </div>
+      </li>
+      <li>
+        <span class="emoji">⛽</span>
+        <div class="content">
+          <strong>油价被迫上调</strong> — 5月15日印度上调汽油价格约<b>3%</b>（97.77卢比/升），柴油升至90.67卢比/升。莫迪之前一直压着不涨，选后才动手
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🔥</span>
+        <div class="content">
+          <strong>LPG（液化石油气）短缺</strong> — 印度60%的LPG靠进口，90%经霍尔木兹海峡。卡塔尔Ras Laffan LNG工厂遭袭停产。政府被迫优先保障家庭用气，削减商用供应
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🍜</span>
+        <div class="content">
+          <strong>餐饮业受重创</strong> — 80%餐馆依赖LPG，气价飙升导致孟买等地大量餐馆关门，外卖平台（Zomato、Swiggy）股价下跌
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🚛</span>
+        <div class="content">
+          <strong>运输业连锁反应</strong> — 柴油尾气处理液（DEF）的原料尿素进口受阻，可能影响全国卡车运输网络
+        </div>
+      </li>
+    </ul>
+    <div class="quote-box">
+      <p>"莫迪呼吁节约燃油是'爱国行为'——鼓励居家办公、减少出国旅行、减少黄金购买。反对党则指出，选前不涨价、选后才调价，明显是政治考量。"</p>
+      <div class="author">— Al Jazeera / CNBC 综合报道</div>
+    </div>
+  </div>
+
+  <!-- 2. 汇率与金融 -->
+  <div class="card" id="currency">
+    <h2><span class="icon" style="background:rgba(244,63,94,0.15)">💰</span> 汇率压力与金融动荡</h2>
+    <ul class="impact-list">
+      <li>
+        <span class="emoji">📉</span>
+        <div class="content">
+          <strong>卢比年内贬值7%+</strong> — 从年初约89卢比/美元跌至5月22日的<b>95.59</b>，盘中一度触及<b>96.34</b>的历史新低，是<b>亚洲今年表现最差的货币</b>
+        </div>
+      </li>
+      <li>
+        <span class="emoji">📊</span>
+        <div class="content">
+          <strong>贸易加权汇率十年新低</strong> — 路透社报道，卢比的实际有效汇率（REER）已跌至逾十年最低，不仅对美元弱，对一篮子货币也在全面走弱
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🏃</span>
+        <div class="content">
+          <strong>外资疯狂撤离</strong> — 2026年至今外资已抛售约<b>$230亿</b>印度股票，超过去年全年纪录。FII（外国机构投资者）累计撤资超过2.65万亿卢比
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🏦</span>
+        <div class="content">
+          <strong>央行两难</strong> — 印度储备银行（RBI）面临艰难抉择：加息抗通胀 vs 降息稳增长。远期外汇合约持仓达<b>$1,030亿</b>，动用外储干预汇率空间有限
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🇺🇸</span>
+        <div class="content">
+          <strong>美元指数走强</strong> — 美元指数在99附近高位运行，美联储维持高利率，新兴市场资金持续回流美国
+        </div>
+      </li>
+      <li>
+        <span class="emoji">📈</span>
+        <div class="content">
+          <strong>股市进入技术性回调</strong> — Nifty 50从1月高点26,373跌超10%（进入技术性修正区），Sensex一度跌破74,500。单日跌幅多次超过1.7%
+        </div>
+      </li>
+    </ul>
+    <div class="quote-box">
+      <p>"卢比的疲软不仅仅是伊朗战争的问题——它反映了印度在吸引外资方面更深层的结构性困境。"</p>
+      <div class="author">— The Economist, 2026年4月30日</div>
+    </div>
+  </div>
+
+  <!-- 3. 外交困境 -->
+  <div class="card" id="diplomacy">
+    <h2><span class="icon" style="background:rgba(139,92,246,0.15)">🏛️</span> 外交困境 — 多向平衡的极限测试</h2>
+    <ul class="impact-list">
+      <li>
+        <span class="emoji">🤝</span>
+        <div class="content">
+          <strong>官方立场：中立</strong> — 印度宣布保持中立，呼吁各方停火。但莫迪与海湾领导人通话时"谴责侵犯主权"却<b>不提伊朗</b>，被反对党批评为"双重标准"
+        </div>
+      </li>
+      <li>
+        <span class="emoji">⚖️</span>
+        <div class="content">
+          <strong>四角关系撕裂</strong> — 印度同时需要：<b>美国</b>（技术+国防+资本）、<b>以色列</b>（国防+情报）、<b>伊朗</b>（地缘+能源）、<b>海湾国家</b>（能源+侨汇+侨民），这场战争让这些关系变得彼此矛盾
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🇵🇰</span>
+        <div class="content">
+          <strong>巴基斯坦趁势而上</strong> — 巴基斯坦成为美伊之间的<b>主要调停人</b>，与埃及、土耳其一道主持和谈。印度媒体称这是"印度外交的灾难性挫折"
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🚢</span>
+        <div class="content">
+          <strong>直接冲突</strong> — 4月19日伊朗向印度船只开火（后称非故意），4月22日扣押一艘印度船只。印度军舰IRIS Dena被击沉
+        </div>
+      </li>
+      <li>
+        <span class="emoji">💊</span>
+        <div class="content">
+          <strong>人道主义援助</strong> — 印度向伊朗运送了医疗援助物资，同时未谴责对哈梅内伊的刺杀——委婉平衡的典型操作
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🌐</span>
+        <div class="content">
+          <strong>金砖舞台</strong> — 5月14日印度主办金砖外长会议，伊朗外长出席。印度试图通过多边框架展现影响力，但收效有限
+        </div>
+      </li>
+    </ul>
+    <div class="quote-box">
+      <p>"印度不再只是西亚的旁观者。它对这一地区的依赖意味着每一次局势升级都在直接考验印度的'大国雄心'。战略自主在流动的多极秩序中运作最佳——但当对立阵营同时要求政治忠诚、制裁合规和安全结盟时，它就变得极其艰难。"</p>
+      <div class="author">— Amitabh Mattoo, 尼赫鲁大学国际研究学院院长</div>
+    </div>
+  </div>
+
+  <!-- 4. 经济连锁反应 -->
+  <div class="card" id="economy">
+    <h2><span class="icon" style="background:rgba(59,130,246,0.15)">🏭</span> 经济连锁反应 — 从工厂到餐桌</h2>
+    <ul class="impact-list">
+      <li>
+        <span class="emoji">📦</span>
+        <div class="content">
+          <strong>供应链断裂</strong> — 依赖石油衍生品（聚合物、油漆、粘合剂、塑料、树脂）的制造业成本飙升，汽车、电子产品预期涨价
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🌾</span>
+        <div class="content">
+          <strong>化肥短缺威胁农业</strong> — 印度进口大量化肥，供应链受阻可能影响即将到来的种植季
+        </div>
+      </li>
+      <li>
+        <span class="emoji">💵</span>
+        <div class="content">
+          <strong>莫迪呼吁节约外汇</strong> — "在目前的情况下，我们必须高度重视节约外汇"——他呼吁减少出国旅游和黄金进口，以控制经常账户赤字
+        </div>
+      </li>
+      <li>
+        <span class="emoji">📰</span>
+        <div class="content">
+          <strong>滞胀风险上升</strong> — 持续能源冲击推高通胀（输入型通胀），同时经济增速可能放缓，出现类似1970年代的滞胀风险
+        </div>
+      </li>
+      <li>
+        <span class="emoji">📉</span>
+        <div class="content">
+          <strong>经常账户赤字扩大</strong> — 石油进口账单飙升，经常账户赤字预计扩至GDP的2%以上
+        </div>
+      </li>
+      <li>
+        <span class="emoji">🏠</span>
+        <div class="content">
+          <strong>民生压力</strong> — 出租车司机、小商贩等底层群体首当其冲。"对我们普通人来说，哪怕1卢比都很重要。"（新德里出租车司机Manoj Kumar）
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. 关键事件时间线 -->
+  <div class="card" id="timeline">
+    <h2><span class="icon" style="background:rgba(255,255,255,0.1)">📅</span> 关键事件时间线</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="date">2月28日</div>
+        <p>美以对伊朗发动空袭，2026年伊朗战争爆发。印度宣布中立。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">3月</div>
+        <p>卢比跌破90关口，油价持续攀升。卡塔尔LNG工厂遭袭停产。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">3月下旬</div>
+        <p>卢比首次跌破95。印度政府阻止纪录片《Hind Rajab的声音》上映，以免影响与以色列关系。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">4月19日</div>
+        <p>伊朗封锁霍尔木兹海峡并向印度船只开火（后称非故意）。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">4月22日</div>
+        <p>伊朗扣押一艘试图穿越海峡的印度船只。印度军舰IRIS Dena被击沉。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">5月初</div>
+        <p>卢比跌至96区间创历史新低。Nifty从1月高点回调超10%，进入技术性修正。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">5月11日</div>
+        <p>莫迪发表全国讲话，呼吁节约燃料、减少出国、暂停购买黄金，称节约燃料是"爱国行为"。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">5月14日</div>
+        <p>金砖外长会议在印度举行，伊朗外长出席。印度试图在多边框架下寻找空间。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">5月15日</div>
+        <p>印度被迫上调汽油价格约3%（选后首次）。新德里实施政府雇员强制居家办公等紧缩措施。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">5月18日</div>
+        <p>卢比再创纪录新低，外汇储备反弹至$6,970亿。股市继续承压。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="date">5月22日</div>
+        <p>卢比收于95.59。整体形势仍未见好转迹象。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 多角度分析 -->
+  <div class="card" id="perspectives">
+    <h2><span class="icon" style="background:rgba(34,197,94,0.15)">🎯</span> 多角度深度分析</h2>
+
+    <div class="perspective-grid">
+      <div class="perspective-box">
+        <h4>🔍 地缘政治角度</h4>
+        <p><b>印度多向平衡（Multi-Alignment）策略面临极限测试。</b>印度数十年精妙的外交平衡术——同时与美、以、伊、海湾国家保持关系——在被迫选边站的战争中难以为继。巴基斯坦借机登上调停舞台，印度的地区影响力被削弱。核心矛盾：美国对印度的战略价值（技术、国防、印太制衡）最终会压倒其他考量。</p>
+      </div>
+
+      <div class="perspective-box">
+        <h4>💰 宏观经济角度</h4>
+        <p><b>滞胀阴影逼近。</b>油价推高输入型通胀，但经济增速已在放缓。RBI夹在加息控通胀与降息稳增长之间。卢比贬值加剧进口成本，经常账户赤字扩大。一个好消息是印度外储仍有$6,970亿，比2013年"缩减恐慌"时期强得多，但$1,030亿的远期合约是隐性风险。</p>
+      </div>
+
+      <div class="perspective-box">
+        <h4>📈 市场角度</h4>
+        <p><b>外资逃离潮堪比金融危机。</b>2026年外资撤出$230亿印度股票，创纪录。Nifty从高点跌超10%进入技术修正。但印度股市相对其他新兴市场仍有韧性——印度国内投资者（共同基金、保险）提供了部分缓冲。如果战争结束，回流资金可能推动快速反弹。</p>
+      </div>
+
+      <div class="perspective-box">
+        <h4>🏭 产业角度</h4>
+        <p><b>制造业雪上加霜。</b>印度"制造强国"雄心受挫——石油衍生品短缺推高汽车、电子、包装成本。餐饮业（80%依赖LPG）遭遇生存危机。化肥短缺威胁农业。但进口替代可能加速：高油价反而可能推动印度加快可再生能源和本土能源布局。</p>
+      </div>
+
+      <div class="perspective-box">
+        <h4>🏛️ 政治角度</h4>
+        <p><b>莫迪的选后算账。</b>选前压住油价不涨、选后立马调价，反对党强烈批评。国大党指责政府在外交上"软弱无能"。但莫迪在安全议题上仍有民意基础——印度民众普遍支持国家的中立立场。2026年是多邦选举年，经济压力可能影响选情。</p>
+      </div>
+
+      <div class="perspective-box">
+        <h4>🌏 比较角度</h4>
+        <p><b>与2013年对比：进步显着但挑战不同。</b>2013年"缩减恐慌"时印度是"脆弱五国"之一，外储仅$2,750亿，卢比暴跌。现在的印度：外储规模翻倍以上、建立了通胀目标框架、数字化外汇管理更高效。但2026年的挑战是战争级别的——霍尔木兹海峡关闭的冲击远超2013年的资本流动逆转。</p>
+      </div>
+
+      <div class="perspective-box">
+        <h4>🔮 前瞻角度</h4>
+        <p><b>三种情景：</b>
+<br><b>① 和平情景（概率30%）：</b>美伊和谈成功，海峡重开，卢比反弹至88-90，股市报复性反弹。
+<br><b>② 僵持情景（概率50%）：</b>战争延续但有限度，油价维持$100-110，卢比在95-100区间徘徊，印度经济增速降至5%以下。
+<br><b>③ 升级情景（概率20%）：</b>冲突扩大至整个海湾，卢比破100，通胀失控，印度被迫向IMF求援。</p>
+      </div>
+
+      <div class="perspective-box">
+        <h4>📘 能源转型角度</h4>
+        <p><b>危机中的机遇。</b>高油价和供应链断裂可能加速印度的能源转型。莫迪政府已宣布加快太阳能、风能和绿色氢能投资。印度承诺2070年净零排放的目标可能因这场危机而获得新的紧迫性。短期痛苦，长期或推动能源自主。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 总结 -->
+  <div class="card" style="border-color: var(--accent);">
+    <h2><span class="icon" style="background:rgba(232,121,63,0.15)">📌</span> 总结</h2>
+    <p style="color: var(--text2); margin-bottom: 16px;">
+      伊朗战争是印度近年来面临的最严峻外部冲击之一。与疫情不同，这次危机同时打击了印度的<b>能源安全、汇率稳定、资本市场、外交关系和民生经济</b>——几乎没有任何一个领域可以幸免。
+    </p>
+    <p style="color: var(--text2);">
+      印度的底牌并不差：$6,970亿的外储提供了缓冲空间、国内投资者群体日益壮大、经济基本面比2013年强得多。但霍尔木兹海峡的关闭直接扼住了能源咽喉，而这场战争何时结束、以什么方式结束，完全不在印度的掌控之中。对于标榜"战略自主"的印度来说，这或许是近年来最痛苦的一课。
+    </p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>数据来源：Reuters、Bloomberg、Trading Economics、RBI、Al Jazeera、Forbes、The Economist、Wikipedia</p>
+  <p style="margin-top:6px;">报告生成时间：2026年5月22日 | 由 🦐 虾虾整理</p>
+</div>
+
+</body>
+</html>
